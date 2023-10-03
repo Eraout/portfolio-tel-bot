@@ -34,13 +34,7 @@ language_dict = {
 
 user_language = {}
 
-def view_my_love(update, context):
-    keyboard = [
-        [InlineKeyboardButton("Моя любіма дівчина", url="https://t.me/fox_eat")]
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.message.reply_text('Настінька я тебе так сильно люблю.', reply_markup=reply_markup)
 
 def start(update: Update, _: CallbackContext) -> None:
     user_id = update.message.from_user.id
@@ -57,9 +51,9 @@ def info(update: Update, context: CallbackContext) -> None:
     user_id = update.message.from_user.id
     chat_id = update.message.chat_id
     language = get_user_language(user_id)
-    context.bot.send_photo(chat_id=chat_id, photo=open('resources/maFace.jpg', 'rb'), caption='Тут є твій текст теекттектпцппкпцп'
-                                                                                       'айцайайцайцайацйц'
-                                                                                       'цайцайцайцайца')
+    context.bot.send_photo(chat_id=chat_id, photo=open('resources/maFace.jpg', 'rb'), caption='Here your text'
+                                                                                       'your text'
+                                                                                       'your text')
 
 def change_language(update: Update, _: CallbackContext) -> None:
     keyboard = [
@@ -137,7 +131,6 @@ def main() -> None:
 
     dispatcher.add_handler(CommandHandler("start", start))
     dispatcher.add_handler(CommandHandler("info", info))
-    dispatcher.add_handler(CommandHandler("showmylove", view_my_love))
     dispatcher.add_handler(CommandHandler("resume", resume))
     dispatcher.add_handler(CommandHandler("language", change_language))
     dispatcher.add_handler(CommandHandler("commands", show_commands))
